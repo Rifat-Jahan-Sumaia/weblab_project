@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+.env
+
+# IDE/editor files
+.vscode/
+*.swp
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+
+# Railway-specific
+*.sqlite3
+*.pyc
+*.pyo
+*.pyd
+
+# Bytecode cache
+*.cache
+
+# Compiled files
+*.so
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# Virtualenv
+.django

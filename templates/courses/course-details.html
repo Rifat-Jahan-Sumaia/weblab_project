@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details - {{ course.title }}</title>
+
+    <!-- Bootstrap CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+
+<body>
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-success py-3">
+    <div class="container-fluid">
+        <!-- Left-aligned title -->
+        <a class="navbar-brand fs-4" href="#">{{ course.title }}</a>
+        <!-- Right-aligned links -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active fs-5" aria-current="page" href="/admin/">Admin</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Course-details
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for t in courses %}
+                        <li><a class="dropdown-item" href="{{ t.id }}/">{{ t.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <!-- Course Details Section -->
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Course Details: {{ course.title }}</h1>
+
+        <h2 class="mt-4">Lessons</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-success">
+                    <tr>
+                        <th>Lesson Title</th>
+                        <th>Lesson Content</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for less in lessons %}
+                    <tr>
+                        <td>{{ less.title }}</td>
+                        <td>{{ less.content }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2">No lessons available for this course.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <br>
+        <a href="{% url 'course_list' %}" class="btn btn-success">Back to Course List</a>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Courses</title>
+</head>
+
+<body>
+    <h1>Available Courses</h1>
+    <ul>
+        {% for course in courses %}
+        <li>
+            <a href="{{ course.pk }}/">{{ course.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="create/">Add a New Course</a>
+</body>
+
+</html>
+
